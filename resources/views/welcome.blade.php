@@ -5,6 +5,7 @@
     </p>
 
     @livewire('counter')
+    @livewire('user-table')
 
     <x-password label="Secret 🙈" value="I love WireUI ❤️" />
 
