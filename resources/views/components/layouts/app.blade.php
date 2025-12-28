@@ -5,23 +5,50 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+    @wireUiScripts
 
-    <!-- Styles -->
-    @vite(['resources/css/app.css'])
+    <script>
+        (function() {
+            // 1️⃣ Pega do localStorage
+            let theme = localStorage.getItem('theme');
+
+            // 2️⃣ Se não existir, pega do sistema
+            if (!theme) {
+                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+
+            // 3️⃣ Aplica imediatamente ao HTML
+            document.documentElement.setAttribute('data-theme', theme);
+
+            // 4️⃣ Salva no localStorage para persistência
+            localStorage.setItem('theme', theme);
+        })();
+    </script>
+
+    @stack('styles')
+
 </head>
 
-<body>
+<body class="min-h-screen bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100">
 
-    {{ $slot }}
+    <header class="border-b border-gray-200 dark:border-gray-800">
+        <div class="container mx-auto px-4 py-3 flex justify-between">
+            <span class="font-semibold">{{ config('app.name') }}</span>
+            <livewire:theme-switcher />
+        </div>
+    </header>
 
-    <!-- Scripts -->
-    @wireUiScripts
-    @vite(['resources/js/app.js'])
+    <main class="container mx-auto px-4 py-6">
+        {{ $slot }}
+    </main>
+
+    @livewireScripts
+
+    @stack('scripts')
 </body>
 
 </html>
