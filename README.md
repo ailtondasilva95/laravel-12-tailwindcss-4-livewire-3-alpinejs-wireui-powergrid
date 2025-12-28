@@ -13,29 +13,17 @@
 
 ---
 
-> _Instalação dos pacotes de dependência do Composer_
+> _Pacotes de dependência do Composer que foram instalados no projeto_
 
 ### 1. [Laravel Lang](https://laravel-lang.com/basic-usage.html) (Pacote de traduções com suporte a vários idiomas)
 
-```sh
-composer require laravel-lang/common --dev
-```
-
 ### 2. [Livewire 3.x](https://livewire.laravel.com/docs/3.x/installation) (O livewire já vem com o AlpineJS e o Tailwind CSS instalado e configurado)
-
-```sh
-composer require livewire/livewire
-```
 
 ### 3. [WireUI](https://wireui.dev/getting-started/installation)
 
-```sh
-composer require wireui/wireui
-```
-
 ---
 
-> _Instalação dos pacotes de dependência do NodeJS_
+> _Pacotes de dependência do NodeJS que foram instalados no projeto_
 
 ### 1. [Tailwind CSS Forms](https://github.com/tailwindlabs/tailwindcss-forms) (Este pacote é uma dependência do WireUI e do Tailwind; ele não precisa de configuração)
 
